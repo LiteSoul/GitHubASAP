@@ -4,5 +4,6 @@ const searchUser = document.getElementById('searchUser')
 searchUser.addEventListener('keyup', funk)
 //grab input value
 function funk(e) {
-	console.log(e.target.value)
+	const userText = e.target.value
+	if (userText !== '') console.log(userText)
 }

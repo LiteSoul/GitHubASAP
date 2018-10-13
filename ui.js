@@ -41,4 +41,8 @@ class UI {
 			<div class="repos"></div>
 		`
 	}
+
+	clearProfile() {
+		this.profile.innerHTML = ''
+	}
 }

@@ -24,5 +24,6 @@ function funk(e) {
 	}
 	else {
 		//clear profile
+		ui.clearProfile()
 	}
 }

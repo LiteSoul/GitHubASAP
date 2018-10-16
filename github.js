@@ -5,12 +5,21 @@ class GitHub {
 	}
 
 	async getUser(user) {
+		console.log('user request')
 		const profileResponse = await fetch(
 			`https://api.github.com/users/${user}?client_id=${this.client_id}&client_secret=${this.client_secret}`
 		)
-
 		const profile = await profileResponse.json()
+		// return { profile }
+		return profile
+	}
 
-		return { profile }
+	async getUserRepos(user) {
+		console.log('repos request')
+		const reposResponse = await fetch(
+			`https://api.github.com/users/${user}/repos?client_id=${this.client_id}&client_secret=${this.client_secret}`
+		)
+		const repos = await reposResponse.json()
+		return repos
 	}
 }

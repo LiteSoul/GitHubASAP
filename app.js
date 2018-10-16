@@ -8,22 +8,33 @@ const searchUser = document.getElementById('searchUser')
 searchUser.addEventListener('keyup', funk)
 //grab input value
 function funk(e) {
-	const userText = e.target.value
-	if (userText !== '') {
-		//make http call
-		github.getUser(userText)
-			.then(data => {
-				if (data.profile.message === 'Not Found') {
+	const userInput = e.target.value
+	if (userInput !== '') {
+		//make http call for user
+		github.getUser(userInput)
+			.then(profile => {
+				console.log(profile)
+				if (profile.message === 'Not Found') {
 					//show alert for not found
+					ui.showAlert('User not found', 'alert alert-danger')
 				}
 				else {
-					//show profile
-					ui.showProfile(data.profile)
+					//clear 'not found' red alerts
+					ui.clearAlert()
+					//send profile
+					ui.sendProfile(profile)
 				}
+			})
+		//make http call for user repos
+		github.getUserRepos(userInput)
+			.then(repos => {
+				console.log(repos)
+				//send repos
+				ui.sendRepos(repos)
 			})
 	}
 	else {
-		//clear profile
-		ui.clearProfile()
+		//clear profile and repos
+		ui.clearUI()
 	}
 }

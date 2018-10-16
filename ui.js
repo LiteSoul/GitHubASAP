@@ -12,8 +12,9 @@ class UI {
 				<div class="row">
 					<div class="col-md-3">
 						<img src="${user.avatar_url}" alt="" class="img-fluid mb-2">
+						<h5>${user.login}</h5>
 						<a href="${user.html_url}" target="_blank" class="btn btn-primary btn-block mb-3">
-							View ${user.login} Profile
+							View Profile
 						</a>
 					</div>
 					<div class="col-md-9">

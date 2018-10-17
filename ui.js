@@ -80,6 +80,7 @@ class UI {
 
 	//show repos
 	showRepos(repos) {
+		// empty array means no repositories from that user
 		if (repos.length === 0) {
 			this.repos.innerHTML = `
 				<div class="card card-body mb-3">
@@ -87,13 +88,42 @@ class UI {
 				</div>
 			`
 		}
-		else if (this.profileData.login === repos[0].owner.login) {
-			this.repos.innerHTML = `
-				<div class="card card-body mb-3">
-					<h3 class="page-heading mb-3">Latest Repos</h3>
-					<div>${repos[0].name}</div>
-				</div>
-			`
+		// this checks if there is a user, aka user found
+		else if (repos) {
+			//checks if the user is the same as the repos owner, since it's async data
+			if (this.profileData.login === repos[0].owner.login) {
+				this.repos.innerHTML = `
+					<div class="card card-body mb-3">
+						<h3 class="page-heading mb-3">Latest Repositories</h3>
+						<div id="repos-list"></div>
+					</div>
+				`
+				let output = ''
+				repos.forEach(repo => {
+					output += `
+						<div class="row">
+							<div class="col-md-4">
+								<a href="${repo.html_url}" target="_blank">
+									${repo.name}
+								</a>
+							</div>
+							<div class="col-md-8">
+								<span class="badge badge-primary">
+									Stars: ${repo.stargazers_count}
+								</span>
+								<span class="badge badge-secondary">
+									Watchers: ${repo.watchers_count}
+								</span>
+								<span class="badge badge-success">
+									Forks: ${repo.forks_count}
+								</span>
+							</div>
+						</div>
+					`
+				})
+				//output repos
+				document.getElementById('repos-list').innerHTML = output
+			}
 		}
 	}
 

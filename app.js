@@ -16,6 +16,7 @@ function funk(e) {
 				console.log(profile)
 				if (profile.message === 'Not Found') {
 					//show alert for not found
+					ui.clearUI()
 					ui.showAlert('User not found', 'alert alert-danger')
 				}
 				else {
@@ -29,8 +30,10 @@ function funk(e) {
 		github.getUserRepos(userInput)
 			.then(repos => {
 				console.log(repos)
-				//send repos
-				ui.sendRepos(repos)
+				//send repos if username found
+				if (repos.message !== 'Not Found') {
+					ui.sendRepos(repos)
+				}
 			})
 	}
 	else {

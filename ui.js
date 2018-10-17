@@ -90,7 +90,7 @@ class UI {
 		}
 		// this checks if there is a user, aka user found
 		else if (repos) {
-			//then checks if the user is the same as the repos owner, since it's async data
+			//checks if the user is the same as the repos owner, since it's async data
 			if (this.profileData.login === repos[0].owner.login) {
 				this.repos.innerHTML = `
 					<div class="card card-body mb-3">

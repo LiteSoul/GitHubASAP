@@ -13,7 +13,6 @@ function funk(e) {
 		//make http call for user
 		github.getUser(userInput)
 			.then(profile => {
-				console.log(profile)
 				if (profile.message === 'Not Found') {
 					//show alert for not found
 					ui.clearUI()
@@ -29,7 +28,6 @@ function funk(e) {
 		//make http call for user repos
 		github.getUserRepos(userInput)
 			.then(repos => {
-				console.log(repos)
 				//send repos if username found
 				if (repos.message !== 'Not Found') {
 					ui.sendRepos(repos)

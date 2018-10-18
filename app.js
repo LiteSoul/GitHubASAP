@@ -25,6 +25,7 @@ function funk(e) {
 					ui.sendProfile(profile)
 				}
 			})
+			.catch(err => console.log('Ooops, error', err.message));
 		//make http call for user repos
 		github.getUserRepos(userInput)
 			.then(repos => {

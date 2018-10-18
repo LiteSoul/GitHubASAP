@@ -13,19 +13,18 @@ function funk(e) {
 		//make http call for user
 		github.getUser(userInput)
 			.then(profile => {
-				if (profile.message === 'Not Found') {
+				//clear 'not found' red alerts
+				ui.clearAlert()
+				//send profile
+				ui.sendProfile(profile)
+			})
+			.catch(error => {
+				if (error.message === '404') {
 					//show alert for not found
 					ui.clearUI()
 					ui.showAlert('User not found', 'alert alert-danger')
 				}
-				else {
-					//clear 'not found' red alerts
-					ui.clearAlert()
-					//send profile
-					ui.sendProfile(profile)
-				}
-			})
-			.catch(err => console.log('Ooops, error', err.message));
+			});
 		//make http call for user repos
 		github.getUserRepos(userInput)
 			.then(repos => {

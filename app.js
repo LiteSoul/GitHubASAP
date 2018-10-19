@@ -6,8 +6,10 @@ const ui = new UI
 const searchUser = document.getElementById('searchUser')
 // focus on input on page load
 window.onload = function () {
-	searchUser.focus()
-	searchUser.click()
+	setTimeout(() => {
+		searchUser.focus()
+		searchUser.click()
+	}, 1000)
 }
 // listen for values
 searchUser.addEventListener('keyup', inputRecorder)

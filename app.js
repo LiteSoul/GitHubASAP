@@ -5,7 +5,10 @@ const ui = new UI
 // search input
 const searchUser = document.getElementById('searchUser')
 // focus on input on page load
-window.onload = function () { searchUser.focus().click() }
+window.onload = function () {
+	searchUser.focus()
+	searchUser.click()
+}
 // listen for values
 searchUser.addEventListener('keyup', inputRecorder)
 //grab input value

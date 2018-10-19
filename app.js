@@ -4,13 +4,6 @@ const github = new GitHub
 const ui = new UI
 // search input
 const searchUser = document.getElementById('searchUser')
-// focus on input on page load
-window.onload = function () {
-	searchUser.focus()
-	setTimeout(() => {
-		searchUser.click()
-	}, 1000)
-}
 // listen for values
 searchUser.addEventListener('keyup', inputRecorder)
 //grab input value

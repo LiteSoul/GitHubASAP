@@ -5,9 +5,12 @@ const ui = new UI
 // search input
 const searchUser = document.getElementById('searchUser')
 // listen for values
-searchUser.addEventListener('keyup', funk)
+searchUser.addEventListener('keyup', inputRecorder)
 //grab input value
-function funk(e) {
+function inputRecorder(e) {
+	if (e.keyCode === 13) {
+		searchUser.blur()
+	}
 	const userInput = e.target.value
 	if (userInput !== '') {
 		//make http call for user

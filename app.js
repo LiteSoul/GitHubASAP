@@ -6,8 +6,8 @@ const ui = new UI
 const searchUser = document.getElementById('searchUser')
 // focus on input on page load
 window.onload = function () {
+	searchUser.focus()
 	setTimeout(() => {
-		searchUser.focus()
 		searchUser.click()
 	}, 1000)
 }
